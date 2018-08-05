@@ -8,7 +8,8 @@ module.exports = function (nodecg) {
         return;
     }
 
-    const statusRepl = nodecg.Replicant('status', {defaultValue: '', persistent: false});
+    const loadedRepl = nodecg.Replicant('dashboard-loaded', {defaultValue: false, persistent: false});
+    const statusRepl = nodecg.Replicant('status', {defaultValue: 'Refresh page to load info...', persistent: false});
     const gameRepl = nodecg.Replicant('game', {defaultValue: '', persistent: false});
     const liveRepl = nodecg.Replicant('live', {defaultValue: false, persistent: false});
     const streamStartRepl = nodecg.Replicant('start', {defaultValue: null, persistent: false});
@@ -16,7 +17,17 @@ module.exports = function (nodecg) {
     const viewsRepl = nodecg.Replicant('views', {defaultValue: 0, persistent: false});
     const followersRepl = nodecg.Replicant('followers', {defaultValue: 0, persistent: false});
 
-    setInterval(getInfo, nodecg.bundleConfig.updateInterval * 1000);
+    var requesting = false;
+
+    loadedRepl.on('change', newVal => {
+        if (newVal && !requesting) {
+            requesting = true;
+            setInterval(getInfo, nodecg.bundleConfig.updateInterval * 1000);
+            getInfo();
+        }
+    });
+
+    
 
     function getInfo() {
         twitchApi.get('/streams/{{username}}', {}).then(response => {
@@ -25,8 +36,6 @@ module.exports = function (nodecg) {
                 return;
             }
             var stream = response.body.stream;
-
-            console.log(response.body);
 
             if (stream == null) {
                 liveRepl.value = false;
@@ -48,7 +57,6 @@ module.exports = function (nodecg) {
             viewsRepl.value = response.body.views;
             followersRepl.value = response.body.followers;
 
-            console.log(response.body);
         }).catch(err => {
             nodecg.log.error('Api error', err);
         });

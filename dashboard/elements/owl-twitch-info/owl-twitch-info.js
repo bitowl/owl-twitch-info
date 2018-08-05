@@ -8,7 +8,8 @@
         
         ready() {
             super.ready();
-
+            const loadedRepl = nodecg.Replicant('dashboard-loaded', {defaultValue: false, persistent: false});
+            loadedRepl.value = true;
         }
     }
     customElements.define(OwlTwitchInfo.is, OwlTwitchInfo);
