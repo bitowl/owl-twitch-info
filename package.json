@@ -1,0 +1,39 @@
+{
+  "name": "owl-twitch-info",
+  "version": "0.1.0",
+  "description": "Edit stream title, show viewer count",
+  "homepage": "",
+  "author": {
+    "name": "bitowl",
+    "email": "bitowl@bitowl.de",
+    "url": "https://bitowl.net"
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "twitch",
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "~1.1.0",
+    "bundleDependencies": {
+      "lfg-twitchapi": "^2.0.0",
+      "owl-nodecg-styles": "^0.0.0"
+    },
+    "dashboardPanels": [
+      {
+        "name": "twitch-info",
+        "title": "Twitch Info",
+        "width": 2,
+        "file": "twitch-info.html",
+        "headerColor": "#4b367c"
+      }
+    ]
+  },
+  "repository": "git@github.com:bitowl/nodecg.git",
+  "license": "MIT"
+}

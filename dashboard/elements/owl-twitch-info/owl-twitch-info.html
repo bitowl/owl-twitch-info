@@ -1,0 +1,59 @@
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../bower_components/nodecg-replicant/nodecg-replicant.html">
+<link rel="import" href="/bundles/owl-nodecg-styles/dashboard/css/bitowl-theme.html">
+<dom-module id="owl-twitch-info">
+    <template>
+        <style include="bitowl-theme">
+            :host {
+            }
+			p {
+				border-bottom: 1px solid var(--default-primary-color);
+				padding-bottom: 4px;
+                min-height: 34px;
+			}
+			span {
+				padding-bottom: 2px;
+				display: block;
+			}
+            
+        </style>
+
+        <nodecg-replicant replicant-name="status" value="{{status}}"></nodecg-replicant>
+        <nodecg-replicant replicant-name="game" value="{{game}}"></nodecg-replicant>
+        <nodecg-replicant replicant-name="live" value="{{live}}"></nodecg-replicant>
+        <nodecg-replicant replicant-name="start" value="{{start}}"></nodecg-replicant>
+        <nodecg-replicant replicant-name="viewers" value="{{viewers}}"></nodecg-replicant>
+        <nodecg-replicant replicant-name="views" value="{{views}}"></nodecg-replicant>
+        <nodecg-replicant replicant-name="followers" value="{{followers}}"></nodecg-replicant>
+
+        <p>
+            <span class="owl-label">Status</span>
+            {{ status }}
+        </p>
+        <p>
+        <span class="owl-label">Game</span>
+            {{ game }}
+        </p>
+        <p>
+            <span class="owl-label">Live</span>
+            {{ live }}
+        </p>
+        <p>
+            <span class="owl-label">Start</span>
+            {{ start }}
+        </p>
+        <p>
+            <span class="owl-label">Viewers</span>
+            {{ viewers }}
+        </p>
+        <p>
+            <span class="owl-label">Views</span>
+            {{ views }}
+        </p>
+        <p>
+            <span class="owl-label">Followers</span>
+            {{ followers }}
+        </p>
+    </template>
+    <script src="owl-twitch-info.js"></script>
+</dom-module>

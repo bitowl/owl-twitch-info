@@ -1,0 +1,12 @@
+{
+    "type": "object",
+    "properties": {
+        "updateInterval": {
+            "type": "number",
+            "default": 60,
+            "description": "Interval to fetch information (seconds)"
+        }
+    },
+    "required": [
+    ]
+}
