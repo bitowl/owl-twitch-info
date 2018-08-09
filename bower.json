@@ -1,0 +1,6 @@
+{
+  "name": "owl-twitch-info",
+  "dependencies": {
+    "nodecg-replicant": "NodeCGElements/nodecg-replicant#^1.0.1"
+  }
+}
