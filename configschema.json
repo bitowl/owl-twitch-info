@@ -1,12 +1,15 @@
 {
-    "type": "object",
-    "properties": {
-        "updateInterval": {
-            "type": "number",
-            "default": 60,
-            "description": "Interval to fetch information (seconds)"
-        }
+  "type": "object",
+  "properties": {
+    "channelId": {
+      "type": "number",
+      "description": "The id of the channel to watch for followers"
     },
-    "required": [
-    ]
+    "updateInterval": {
+      "type": "number",
+      "default": 60,
+      "description": "Interval to fetch information (seconds)"
+    }
+  },
+  "required": ["channelId"]
 }
